@@ -37,7 +37,7 @@ header {
 }
 .main-menu ul li a {
     text-decoration: saddlebrown;
-    color: #888
+    color: #888;
     border: #242424;
 }
 .main-menu ul li a :hover {
