@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Life Save Adopting</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body id="contact">
+
+<!-- Container to Wrap Everything-->
+<div id="container">
+
+<!-- Brand of Website-->
+<header>
+    <div class="main-header">
+        <div class="logo">
+        </div>
+            <h1>LIFE SAVE</h1>
+            <h2>Pet Adoption and Rescue Center</h2>
+    </div>   
+    </header>
+
+
+<!-- Main Navigation -->
+<nav>
+    <div class="main-menu">
+   <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="adoption.html">Adoption</a></li>
+    <li class="active"><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html"> Contact Us</a></li>
+   </ul> 
+</div>
+</nav><!-- End Main Navigation -->
+
+<!-- Main Content -->
+<main>
+    <h1>Variation of the friends we have</h1>
+    <p>contact us to see them in reallife
+    </p>
+    <ul id="album">
+        <!--<li id="photo"><img src="images/dog1.jpg"></li>
+        <li id="photo"><img src="images/dog2.jpg"></li>
+        <li id="photo"><img src="images/dog3.jpg"></li>
+        <li id="photo"><img src="images/dog4.jpg"></li>
+        <li id="photo"><img src="images/dog5.jpg"></li>
+        <li id="photo"><img src="images/dog6.jpg"></li>
+        <li id="photo"><img src="images/dog7.jpg"></li>
+        <li id="photo"><img src="images/dog8.jpg"></li>
+        <li id="photo"><img src="images/dog9.jpg"></li>
+        <li id="photo"><img src="images/dog10.jpg"></li>-->
+    </ul>
+       
+</main><!-- End Main Content -->
+
+<!-- Footer Information -->
+<footer>&copy; Copyright 2024 :: Lifesave.com
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+    </footer>
+</body>
+<script>
+    var photos = []; // Declare an empty array to store image elements
+    var fileNames = []; // Declare an empty element to store image file names
+    var imageList = []; // Declare an empty array to store HTML list that contains an image
+    var image; // Declare an empty variable to store the assembled image list codes
+    var openList = "<li id='photo'>"; // Declare a variable to contain the open list tag
+    var closeList = "</li>"; // Declare a variable to contain the close list tag
+    //creat a loop to create 6 images starting with index of 0
+    for (var i = 0; i < 10; i++) {
+    fileNames.push("dog"+(i+1));//create image file name and store in the array
+    photos.push("<img src='images/" + fileNames[i] + ".jpg'>"); // Assemble file name into image element and store in an array
+    image = openList + photos[i] + closeList; // Assemble image element from array with list elements and store in a variable
+    imageList.push(image); // Store (push) the assembled list codes into an array
+    // Display all six image codes stored in the array
+    document.getElementById("album").innerHTML = imageList;
+}   
+</script>
+</html>
