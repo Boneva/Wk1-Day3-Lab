@@ -62,21 +62,76 @@
     </div>
     </footer>
 </body>
+
 <script>
     var photos = []; // Declare an empty array to store image elements
     var fileNames = []; // Declare an empty element to store image file names
     var imageList = []; // Declare an empty array to store HTML list that contains an image
     var image; // Declare an empty variable to store the assembled image list codes
-    var openList = "<li id='photo'>"; // Declare a variable to contain the open list tag
+    var openList = "<li>"; // Declare a variable to contain the open list tag
     var closeList = "</li>"; // Declare a variable to contain the close list tag
-    //creat a loop to create 6 images starting with index of 0
+
+    // Info box content arrays
+    var headings = [" Siberian Husky", "Miniature Pinscher", "Pembroke Welsh Corgi", "Jack Russell Terrier", "Pomeranian", "Yorkshire Terrier", "Havanese", "Rat Terrier", "Schnoodle (Schnauzer/Poodle Mix)", "Bichon Frise"];
+    var texts = [
+        "The Siberian Husky is a medium-sized working dog known for its wolf-like appearance and striking blue or multicolored eyes. They have a thick double coat that keeps them warm in cold climates, and they come in various colors and patterns. ",
+        "The Miniature Pinscher, is a small, energetic, and spirited breed known for its fearless attitude. They have a sleek, short coat that typically comes in colors such as black and tan or chocolate and rust.",
+        "The Pembroke Welsh Corgi is a small herding dog with a strong build and short legs. They have a long body, large ears, and a fox-like expression.",
+        "The Jack Russell Terrier is a small, energetic breed known for its lively and fearless nature. They have a short, smooth coat that is usually white with black or tan markings. ",
+        "The Pomeranian is a small, fluffy dog with a lively and outgoing personality. They have a thick double coat that comes in a variety of colors, including orange, black, and cream.",
+        "The Yorkshire Terrier, or Yorkie, is a small, elegant dog with a silky coat that is usually blue and tan. They are known for their feisty and confident personality.",
+        "The Havanese is a small, sturdy dog known for its friendly and affectionate nature. They have a long, silky coat that can come in a variety of colors.",
+        "The Rat Terrier is a small, energetic breed known for its lively and friendly disposition. They have a short, smooth coat that can come in various colors and patterns.",
+        "The Schnoodle is a crossbreed between a Schnauzer and a Poodle. They are known for their intelligence, affectionate nature, and playful attitude.",     
+        "The Bichon Frise is a small, cheerful dog with a fluffy white coat. They are known for their friendly and playful personality. Bichons are intelligent, easy to train, and great with children, making them excellent family pets. ",
+    ];
+
+    // Create a loop to create 6 images starting with an index of 0
     for (var i = 0; i < 10; i++) {
-    fileNames.push("dog"+(i+1));//create image file name and store in the array
-    photos.push("<img src='images/" + fileNames[i] + ".jpg'>"); // Assemble file name into image element and store in an array
-    image = openList + photos[i] + closeList; // Assemble image element from array with list elements and store in a variable
-    imageList.push(image); // Store (push) the assembled list codes into an array
+        fileNames.push("dog" + (i + 1)); // Create image file name and store in the array
+        photos.push("<img src='images/" + fileNames[i] + ".jpg' alt='" + headings[i] + "'>"); // Assemble file name into image element and store in an array
+        image = openList + photos[i] + 
+                "<div class='textOverlay'>" + headings[i] + "</div>" + 
+                "<div class='additionalOverlay'>" + texts[i] + "<a class='closeOverlay'>Click This To Close</a></div>" + 
+                closeList; // Assemble image element from array with list elements and store in a variable
+        imageList.push(image); // Store (push) the assembled list codes into an array
+    }
+
     // Display all six image codes stored in the array
-    document.getElementById("album").innerHTML = imageList;
-}   
+    document.getElementById("album").innerHTML = imageList.join("");
+
+    // Function to show text overlay
+    function showTextOverlay(index) {
+        document.querySelectorAll(".textOverlay")[index].style.visibility = "visible";
+        document.querySelectorAll(".additionalOverlay")[index].style.visibility = "visible";
+    }
+
+    // Function to hide text overlay
+    function hideTextOverlay() {
+        document.querySelectorAll(".textOverlay").forEach(el => el.style.visibility = "hidden");
+        document.querySelectorAll(".additionalOverlay").forEach(el => el.style.visibility = "hidden");
+    }
+
+    // Add event listeners to images
+    document.querySelectorAll("#album li img").forEach((img, index) => {
+        img.addEventListener("click", () => {
+            hideTextOverlay(); // Hide any visible overlays first
+            showTextOverlay(index); // Show the overlay for the clicked image
+        });
+    });
+
+    // Add event listeners to close the overlay when clicking the close link
+    document.addEventListener("click", function(event) {
+        if (event.target.classList.contains('closeOverlay')) {
+            hideTextOverlay();
+        }
+    });
+
+    // Add event listeners to close the overlay when clicking anywhere outside the image
+    document.addEventListener("click", function(event) {
+        if (!event.target.closest("#album li")) {
+            hideTextOverlay();
+        }
+    });
 </script>
 </html>

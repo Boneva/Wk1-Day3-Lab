@@ -202,3 +202,58 @@ main #album img {
     width: 400px;
     height:400px;
 }
+
+      #album {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      #album li {
+        list-style: none;
+        margin: 10px;
+        cursor: pointer;
+        position: relative;
+      }
+      #album img {
+        max-width: 400px;
+        height: auto;
+      }
+      .textOverlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        background: rgba(255, 255, 255, 0.8);
+        color: black;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+        visibility: hidden;
+        z-index: 1001;
+        border-radius: 10px;
+        font-size: 14px;
+      }
+      .additionalOverlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            visibility: hidden;
+            z-index: 1001;
+            border-radius: 10px;
+          }
+      .closeOverlay {
+        display: block;
+        margin-top: 20px;
+        color: yellow;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      
